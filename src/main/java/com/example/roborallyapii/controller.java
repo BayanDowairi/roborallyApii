@@ -28,7 +28,7 @@ public class controller {
     @GetMapping("/loadGame/{id}")
     public ResponseEntity<String> loadGame(@PathVariable String id) {
 
-        String fileName = "src/main/resources/templates/" + id+ ".json" ;
+        String fileName = "src/main/resources/templates/" + id ;
 
         try {
             String fileContent = Files.readString(Paths.get(fileName), StandardCharsets.UTF_8);
@@ -49,7 +49,11 @@ public class controller {
 
 
 
-
+    /***
+     * Getting a list of all the files in the resource folder
+     * Based on a solution found on Stackoverflow (https://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder)
+     * used together with a solution from  Baeldung (https://www.baeldung.com/java-filename-without-extension)
+     */
     @GetMapping("/sendList")
     public ResponseEntity<String> sendList() {
 
@@ -59,7 +63,6 @@ public class controller {
         File[] listOfFiles = resources.listFiles();
         for(int i = 0 ; i < listOfFiles.length ; i++) {
             if (listOfFiles[i].isFile()) {
-                //String filename = Files.readString(listOfFiles[i].getName());
                 String filename = listOfFiles[i].getName();
                 gameFiles.add(filename);
             }
@@ -71,35 +74,34 @@ public class controller {
 
 
     // initialize game
-    @PostMapping("/new/{players}/{board}")
-    public ResponseEntity<String> newGame (@PathVariable String players, @PathVariable String board) {
-
-        String fileName = "src/main/resources/boardOptions/"+board;
-
+    @GetMapping("/new/{players}/{boardNum}")
+    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable int boardNum) {
+        System.out.println(players + "  players" + " , board  " + boardNum);
+        game = new Game(players, boardNum);
+        String filePath = "src/main/resources/boardOptions/"+ boardNum + ".json";
         try {
-            String fileContent = Files.readString(Paths.get(fileName), StandardCharsets.UTF_8);
+            String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
             return ResponseEntity.status(HttpStatus.OK).body(fileContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.players = Integer.parseInt(players);
-        this.board = board;
-
-        System.out.println(players + "  players" + " , board  " + board);
-
         //add players and board number into game to create a game
-        Game Game = new Game(Integer.parseInt(players), Integer.parseInt(board));
 
-        return ResponseEntity.status(HttpStatus.OK).body(board);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
     }
 
     // send gameID
     @GetMapping("/gameID")
-
     public ResponseEntity<String> gameID() {
-        Game game = new Game(6,8);
-        int GameId = game.getGameId();
-        return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(GameId)));
+        try {
+            int GameId = game.getGameId();
+            return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(GameId)));
+        } catch (NullPointerException e) // if game is null
+        {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Game is null");
+        }
+
     }
 
 
