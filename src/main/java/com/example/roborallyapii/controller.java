@@ -22,7 +22,10 @@ public class controller {
     public int newGame;
 
     public int join;
-    public Game game;
+    //Game game;
+
+    List<Game> availableGames =new ArrayList<Game>();
+
 
     // load game
     @GetMapping("/loadGame/{id}")
@@ -77,17 +80,18 @@ public class controller {
     @GetMapping("/new/{players}/{boardNum}")
     public ResponseEntity<Integer> newGame (@PathVariable int players, @PathVariable String boardNum) {
         System.out.println(players + "  players" + " , board  " + boardNum);
-        game = new Game(players, boardNum);
-
-            return ResponseEntity.status(HttpStatus.OK).body(game.getGameId());
-
+        Game game = new Game(players,boardNum);
+        availableGames.add(game);
+        return ResponseEntity.status(HttpStatus.OK).body(game.getGameId());
     }
 
     // send gameID
-    @GetMapping("/gameID")
+  /*  @GetMapping("/gameID")
     public ResponseEntity<String> gameID() {
+
+        //File availbleGames = new File("src/main/resources/availbleGames/" ) ;
         try {
-            int GameId = game.getGameId();
+            int GameId= ;
             return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(GameId)));
         } catch (NullPointerException e) // if game is null
         {
@@ -95,7 +99,7 @@ public class controller {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Game is null");
         }
 
-    }
+    }*/
 
 
 
@@ -122,20 +126,23 @@ public class controller {
         System.out.println(game + id);
     }
 
-    // initialize game
-    @GetMapping("/sendBoard/{folder}/{boardName}")
-    public ResponseEntity<String> sendBoard (@PathVariable String folder, @PathVariable String boardName) {
-        System.out.println(folder + boardName);
+    @PostMapping("/join/{gameId}")
+    public ResponseEntity<Integer> joinGame(@PathVariable int gameId) {
 
-        String filePath = "src/main/resources/" + folder + "/" + boardName;
-        try {
-            String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
-            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (availableGames != null) {
+            for (int i = 0; i < availableGames.size(); i++) {
+                Game game = availableGames.get(i);
+                if (gameId == game.gameId) {
+                    int playerNum = game.joinCounter();
+                    if (playerNum == -1)
+                        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(-1));
+
+                    else
+                        return (ResponseEntity.status(HttpStatus.OK).body(playerNum));
+                }
+
+            }
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(-1));
     }
-
 }
-
