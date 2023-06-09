@@ -75,19 +75,12 @@ public class controller {
 
     // initialize game
     @GetMapping("/new/{players}/{boardNum}")
-    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardNum) {
+    public ResponseEntity<Integer> newGame (@PathVariable int players, @PathVariable String boardNum) {
         System.out.println(players + "  players" + " , board  " + boardNum);
         game = new Game(players, boardNum);
-        String filePath = "src/main/resources/boardOptions/"+ boardNum;
-        try {
-            String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
-            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //add players and board number into game to create a game
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+            return ResponseEntity.status(HttpStatus.OK).body(game.getGameId());
+
     }
 
     // send gameID
@@ -129,4 +122,20 @@ public class controller {
         System.out.println(game + id);
     }
 
+    // initialize game
+    @GetMapping("/sendBoard/{folder}/{boardName}")
+    public ResponseEntity<String> sendBoard (@PathVariable String folder, @PathVariable String boardName) {
+        System.out.println(folder + boardName);
+
+        String filePath = "src/main/resources/" + folder + "/" + boardName;
+        try {
+            String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
+            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+    }
+
 }
+
