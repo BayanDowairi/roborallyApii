@@ -54,12 +54,12 @@ public class controller {
      * Based on a solution found on Stackoverflow (https://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder)
      * used together with a solution from  Baeldung (https://www.baeldung.com/java-filename-without-extension)
      */
-    @GetMapping("/sendList")
-    public ResponseEntity<String> sendList() {
+    @GetMapping("/sendList/{folder}")
+    public ResponseEntity<String> sendList(@PathVariable String folder) {
 
         List<String> gameFiles = new ArrayList<>();
 
-        File resources = new File("src/main/resources/templates/");
+        File resources = new File("src/main/resources/"+folder);
         File[] listOfFiles = resources.listFiles();
         for(int i = 0 ; i < listOfFiles.length ; i++) {
             if (listOfFiles[i].isFile()) {
@@ -75,10 +75,10 @@ public class controller {
 
     // initialize game
     @GetMapping("/new/{players}/{boardNum}")
-    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable int boardNum) {
+    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardNum) {
         System.out.println(players + "  players" + " , board  " + boardNum);
         game = new Game(players, boardNum);
-        String filePath = "src/main/resources/boardOptions/"+ boardNum + ".json";
+        String filePath = "src/main/resources/boardOptions/"+ boardNum;
         try {
             String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
             return ResponseEntity.status(HttpStatus.OK).body(fileContent);

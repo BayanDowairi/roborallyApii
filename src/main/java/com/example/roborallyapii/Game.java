@@ -5,14 +5,12 @@ import java.util.Random;
 public class Game {
 
     int numPlayers;
-    int boardOption;
-
+    String boardOption;
     int gameId;
 
-    public Game(int numPlayers, int boardOption) {
+    public Game(int numPlayers, String boardOption) {
         this.numPlayers = numPlayers;
         this.boardOption = boardOption;
-        this.gameId = gameId;
 
         Random random = new Random();
 
