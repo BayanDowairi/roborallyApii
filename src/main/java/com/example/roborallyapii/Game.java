@@ -9,7 +9,7 @@ public class Game {
     String boardOption;
 
     int gameId;
-
+    private boolean gameFull = false;
 
     public Game(int numPlayers, String boardOption) {
         this.numPlayers = numPlayers;
@@ -26,8 +26,10 @@ public class Game {
     }
 
     public int joinCounter() {
-        if (joinedPlayers>=numPlayers)
+        if (joinedPlayers>=numPlayers){
+            gameFull = true;
             return (-1);
+        }
         return ++joinedPlayers;
 
     }

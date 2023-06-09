@@ -126,6 +126,19 @@ public class controller {
         System.out.println(game + id);
     }
 
+    @GetMapping("/availableGames")
+    public ResponseEntity<String> availablegames(){
+        List<String> ids = new ArrayList();
+        for (int i = 0; i < availableGames.size(); i++) {
+            Game game = availableGames.get(i);
+            ids.add(Integer.toString(game.gameId));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(String.join(",",ids));
+    }
+    @GetMapping("/gameFull")
+    public ResponseEntity<Boolean> gameFull(){
+        return gameFull();
+    }
     @PostMapping("/join/{gameId}")
     public ResponseEntity<Integer> joinGame(@PathVariable int gameId) {
 
