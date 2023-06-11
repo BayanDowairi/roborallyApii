@@ -112,6 +112,19 @@ public class controller {
 
     }
 
+    @GetMapping("/playerCount")
+    public ResponseEntity<String> playersCount(){
+        try {
+            int plyerCount = game.joinCounter();
+            return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
+        }
+
+    catch (NullPointerException e) // if game is null
+    {
+        e.printStackTrace();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No player is joined.");
+    }
+    }
 
 
     // save game
@@ -179,4 +192,35 @@ public class controller {
         return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body("-1"));
     }
 
+    @GetMapping("/playerCount/{gameId}")
+    public ResponseEntity<String> playersCount(@PathVariable int gameId){
+
+        if (availableGames != null) {
+            for (int i = 0; i < availableGames.size(); i++) {
+                Game game = availableGames.get(i);
+                if (gameId == game.gameId) {
+                    int plyerCount = game.getJoinedPlayers();
+                    return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
+                }
+            }
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("Players must be joined."));
+    }
+
+    @GetMapping("/start/{gameId}")
+    public ResponseEntity<String> startGame(@PathVariable int gameId) {
+        if (gamesInProgress != null) {
+            for (int i = 0; i < gamesInProgress.size(); i++) {
+                Game game = gamesInProgress.get(i);
+                if (gameId == game.gameId) {
+                    System.out.println(game.getNumPlayers() + "  players" + " , board  " + game.getBoardOption() + "Game Id " +game.getGameId() );
+                    game = new Game(game.getNumPlayers(), game.getBoardOption());
+                    //return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(game));
+                }
+            }
+
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(game));
+    }
 }

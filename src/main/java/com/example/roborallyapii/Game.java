@@ -1,5 +1,10 @@
 package com.example.roborallyapii;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.Random;
 
 public class Game {
@@ -34,9 +39,24 @@ public class Game {
 
     }
 
+    public int getJoinedPlayers() {
+        return joinedPlayers;
+    }
+
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+
+    public String getBoardOption() {
+        return boardOption;
+    }
+
     public boolean gameIsFull(){
         return gameFull;
     }
+
+
+
 
 
 }
