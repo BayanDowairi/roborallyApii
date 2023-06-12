@@ -62,7 +62,7 @@ public class controller {
     }
 
 
-    // initialize game
+    // CREATE A GAME OBJECT
     @GetMapping("/createGame/{players}/{boardName}")
     public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardName) {
         System.out.println(players + "  players" + " , board  " + boardName);
