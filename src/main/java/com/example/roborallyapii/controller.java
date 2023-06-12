@@ -30,21 +30,6 @@ public class controller {
     List<Game> availableGames =new ArrayList<Game>();
     List<Game> gamesInProgress = new ArrayList<>();
 
-    // load game
-  /*  @GetMapping("/loadGame/{id}")
-    public ResponseEntity<String> loadGame(@PathVariable String id) {
-
-        String fileName = "src/main/resources/templates/" + id ;
-
-        try {
-            String fileContent = Files.readString(Paths.get(fileName), StandardCharsets.UTF_8);
-            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
-    }*/
-
     @GetMapping("/test")
     public ResponseEntity<String> test() {
 
@@ -78,28 +63,22 @@ public class controller {
 
 
     // initialize game
-    @GetMapping("/new/{players}/{boardNum}")
-    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardNum) {
-        System.out.println(players + "  players" + " , board  " + boardNum);
-        Game game = new Game(players, boardNum);
+    @GetMapping("/createGame/{players}/{boardName}")
+    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardName) {
+        System.out.println(players + "  players" + " , board  " + boardName);
+        Game game = new Game(players, boardName);
         availableGames.add(game);
         int gameId = game.getGameId();
         return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(gameId));
 
     }
 
-    // initialize game
-    @GetMapping("/sendBoard/{gameId}/{folder}")
-    public ResponseEntity<String> sendBoard (@PathVariable String gameId, @PathVariable String folder) {
+    // SEND JSON STRING FOR A NEW BOARD
+    @GetMapping("/newBoard/{gameId}")
+    public ResponseEntity<String> newBoard (@PathVariable String gameId, @PathVariable String folder) {
         Game game = findGame(parseInt(gameId));
-        String filePath = "src/main/resources/" + folder + "/" + game.boardOption;
-        try {
-            String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
-            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+        String filePath = "src/main/resources/boardOptions/" + game.boardOption;
+        return getFileContent(filePath);
     }
 
     private Game findGame(int gameId){
@@ -111,6 +90,24 @@ public class controller {
         System.out.println("Game not found.");
         return null;
     }
+
+    // SEND JSON STRING FOR AN EXISTING BOARD WITH PLAYERS AND GAME STATE
+    @GetMapping("/existingBoard/{boardName}")
+    public ResponseEntity<String> existingBoard(@PathVariable String boardName){
+        String filePath = "src/main/resources/templates/" + boardName;
+        return getFileContent(filePath);
+    }
+
+    private ResponseEntity<String> getFileContent(String path){
+        try {
+            String fileContent = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
+            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+    }
+
     // send gameID
     @GetMapping("/gameID")
     public ResponseEntity<String> gameID() {
@@ -151,7 +148,7 @@ public class controller {
     }
 
     @GetMapping("/availableGames")
-    public ResponseEntity<String> availablegames(){
+    public ResponseEntity<String> availableGames(){
         List<String> ids = new ArrayList();
         for (int i = 0; i < availableGames.size(); i++) {
             Game game = availableGames.get(i);
