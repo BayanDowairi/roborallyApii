@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Game {
     int joinedPlayers = 1;
+
     int numPlayers;
     String boardOption;
     int gameId;
