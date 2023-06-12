@@ -92,7 +92,7 @@ public class controller {
     @GetMapping("/sendBoard/{gameId}/{folder}")
     public ResponseEntity<String> sendBoard (@PathVariable String gameId, @PathVariable String folder) {
         Game game = findGame(parseInt(gameId));
-        String filePath = "src/main/resources/" + folder + "/" + game.boardOption + ".json";
+        String filePath = "src/main/resources/" + folder + "/" + game.boardOption;
         try {
             String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
             return ResponseEntity.status(HttpStatus.OK).body(fileContent);
@@ -200,9 +200,9 @@ public class controller {
     @GetMapping("/playerCount/{gameId}")
     public ResponseEntity<String> playersCount(@PathVariable int gameId){
 
-        if (availableGames != null) {
-            for (int i = 0; i < availableGames.size(); i++) {
-                Game game = availableGames.get(i);
+        if (gamesInProgress != null) {
+            for (int i = 0; i < gamesInProgress.size(); i++) {
+                Game game = gamesInProgress.get(i);
                 if (gameId == game.gameId) {
                     int plyerCount = game.getJoinedPlayers();
                     return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
