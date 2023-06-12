@@ -32,7 +32,6 @@ public class controller {
     public ResponseEntity<String> loadGame(@PathVariable String id) {
 
         String fileName = "src/main/resources/templates/" + id ;
-
         try {
             String fileContent = Files.readString(Paths.get(fileName), StandardCharsets.UTF_8);
             return ResponseEntity.status(HttpStatus.OK).body(fileContent);
