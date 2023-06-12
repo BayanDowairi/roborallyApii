@@ -75,13 +75,26 @@ public class controller {
 
     // SEND JSON STRING FOR A NEW BOARD
     @GetMapping("/newBoard/{gameId}")
-    public ResponseEntity<String> newBoard (@PathVariable String gameId, @PathVariable String folder) {
-        Game game = findGame(parseInt(gameId));
+    public ResponseEntity<String> newBoard (@PathVariable String gameId) {
+        for(Game g : availableGames){
+            System.out.println("AVailableGame: " + g.getGameId());
+        }
+        Game game = findGameInProgress(parseInt(gameId));
         String filePath = "src/main/resources/boardOptions/" + game.boardOption;
         return getFileContent(filePath);
     }
 
-    private Game findGame(int gameId){
+    private Game findAvailableGame(int gameId){
+        for(Game g : availableGames){
+            if(gameId == g.gameId){
+                return g;
+            }
+        }
+        System.out.println("Game not found.");
+        return null;
+    }
+
+    private Game findGameInProgress(int gameId){
         for(Game g : gamesInProgress){
             if(gameId == g.gameId){
                 return g;
