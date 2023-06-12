@@ -199,15 +199,23 @@ public class controller {
     @GetMapping("/playerCount/{gameId}")
     public ResponseEntity<String> playersCount(@PathVariable int gameId){
 
-        if (availableGames != null) {
-            for (int i = 0; i < availableGames.size(); i++) {
-                Game game = availableGames.get(i);
-                if (gameId == game.gameId) {
-                    int plyerCount = game.getJoinedPlayers();
-                    return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
-                }
+        for (int i = 0; i < availableGames.size(); i++) {
+            Game game = availableGames.get(i);
+            if (gameId == game.gameId) {
+                int plyerCount = game.getJoinedPlayers();
+                return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
             }
         }
+
+        for (int i = 0; i < gamesInProgress.size(); i++) {
+            Game game = gamesInProgress.get(i);
+            if (gameId == game.gameId) {
+                int plyerCount = game.getJoinedPlayers();
+                return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
+            }
+        }
+
+
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("Players must be joined."));
     }
