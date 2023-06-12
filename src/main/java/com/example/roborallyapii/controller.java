@@ -13,6 +13,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @RestController
 public class controller {
 
@@ -22,13 +24,14 @@ public class controller {
     public int newGame;
 
     public int join;
-    //Game game;
 
+    int j = 0;
+    public Game game;
     List<Game> availableGames =new ArrayList<Game>();
-
+    List<Game> gamesInProgress = new ArrayList<>();
 
     // load game
-    @GetMapping("/loadGame/{id}")
+  /*  @GetMapping("/loadGame/{id}")
     public ResponseEntity<String> loadGame(@PathVariable String id) {
 
         String fileName = "src/main/resources/templates/" + id ;
@@ -39,7 +42,7 @@ public class controller {
             e.printStackTrace();
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
-    }
+    }*/
 
     @GetMapping("/test")
     public ResponseEntity<String> test() {
@@ -73,24 +76,45 @@ public class controller {
     }
 
 
-
-
     // initialize game
     @GetMapping("/new/{players}/{boardNum}")
-    public ResponseEntity<Integer> newGame (@PathVariable int players, @PathVariable String boardNum) {
+    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardNum) {
         System.out.println(players + "  players" + " , board  " + boardNum);
-        Game game = new Game(players,boardNum);
+        Game game = new Game(players, boardNum);
         availableGames.add(game);
-        return ResponseEntity.status(HttpStatus.OK).body(game.getGameId());
+        int gameId = game.getGameId();
+        return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(gameId));
+
     }
 
-    // send gameID
-  /*  @GetMapping("/gameID")
-    public ResponseEntity<String> gameID() {
-
-        //File availbleGames = new File("src/main/resources/availbleGames/" ) ;
+    // initialize game
+    @GetMapping("/sendBoard/{gameId}/{folder}")
+    public ResponseEntity<String> sendBoard (@PathVariable String gameId, @PathVariable String folder) {
+        Game game = findGame(parseInt(gameId));
+        String filePath = "src/main/resources/" + folder + "/" + game.boardOption + ".json";
         try {
-            int GameId= ;
+            String fileContent = Files.readString(Paths.get(filePath), StandardCharsets.UTF_8);
+            return ResponseEntity.status(HttpStatus.OK).body(fileContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
+    }
+
+    private Game findGame(int gameId){
+        for(Game g : gamesInProgress){
+            if(gameId == g.gameId){
+                return g;
+            }
+        }
+        System.out.println("Game not found.");
+        return null;
+    }
+    // send gameID
+    @GetMapping("/gameID")
+    public ResponseEntity<String> gameID() {
+        try {
+            int GameId = game.getGameId();
             return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(GameId)));
         } catch (NullPointerException e) // if game is null
         {
@@ -98,7 +122,7 @@ public class controller {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Game is null");
         }
 
-    }*/
+    }
 
 
 
@@ -125,23 +149,67 @@ public class controller {
         System.out.println(game + id);
     }
 
-    @PostMapping("/join/{gameId}")
-    public ResponseEntity<Integer> joinGame(@PathVariable int gameId) {
+    @GetMapping("/availableGames")
+    public ResponseEntity<String> availablegames(){
+        List<String> ids = new ArrayList();
+        for (int i = 0; i < availableGames.size(); i++) {
+            Game game = availableGames.get(i);
+            ids.add(Integer.toString(game.gameId));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(String.join(",",ids));
+    }
+    @GetMapping("/gameFull/{gameId}")
+    public ResponseEntity<String> gameFull(@PathVariable int gameId){
+        String gameIsFull = "false";
+        for(Game game : gamesInProgress){
+            if (gameId == game.gameId){
+                if(game.gameIsFull())
+                    gameIsFull = "true";
+            }
+        }  return (ResponseEntity.status(HttpStatus.OK).body(gameIsFull));
+    }
+
+    @GetMapping("/join/{gameId}")
+    public ResponseEntity<String> joinGame(@PathVariable int gameId) {
+        int playerNum;
+        if (availableGames != null) {
+            for (int i = 0; i < availableGames.size(); i++) {
+                Game game = availableGames.get(i);
+                if (gameId == game.gameId) {
+                    playerNum = game.joinCounter();
+                    if (playerNum == game.numPlayers) {
+                        availableGames.remove(game);
+                        gamesInProgress.add(game);
+                    }
+                    if(playerNum != -1){
+                        System.out.println(playerNum + "," + game.numPlayers);
+                        String bodyString = playerNum + "," + game.numPlayers;
+                        return (ResponseEntity.status(HttpStatus.OK).body(bodyString));
+                    }
+                }
+
+                // )
+
+            }
+        }
+        System.out.println("Program goes to bad request return statement.");
+        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body("join response -1"));
+    }
+
+    @GetMapping("/playerCount/{gameId}")
+    public ResponseEntity<String> playersCount(@PathVariable int gameId){
 
         if (availableGames != null) {
             for (int i = 0; i < availableGames.size(); i++) {
                 Game game = availableGames.get(i);
                 if (gameId == game.gameId) {
-                    int playerNum = game.joinCounter();
-                    if (playerNum == -1)
-                        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(-1));
-
-                    else
-                        return (ResponseEntity.status(HttpStatus.OK).body(playerNum));
+                    int plyerCount = game.getJoinedPlayers();
+                    return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(plyerCount)));
                 }
-
             }
         }
-        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(-1));
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("Players must be joined."));
     }
+
 }
