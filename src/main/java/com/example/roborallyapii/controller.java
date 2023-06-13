@@ -231,4 +231,23 @@ public class controller {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("Players must be joined."));
     }
 
+   /* @DeleteMapping("/deleteGame/{gameId}")
+    public ResponseEntity<String> deleteGame(@PathVariable int gameId) {
+
+        String filePath = "path/to/file.txt" + findGameInProgress(gameId);
+
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            if (file.delete()) {
+                System.out.println("File deleted successfully.");
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
+        } else {
+            System.out.println("File does not exist.");
+        }
+    }
+    }
+*/
 }
