@@ -232,25 +232,28 @@ public class controller {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("Players must be joined."));
     }
 
-   /* @DeleteMapping("/deleteGame/{gameId}")
+    @DeleteMapping("/deleteGame/{gameId}")
     public ResponseEntity<String> deleteGame(@PathVariable int gameId) {
 
-        String filePath = "path/to/file.txt" + findGameInProgress(gameId);
-
+        String filePath = "src/main/resources/templates/" + gameId;
+        System.out.println("Delete file path : " + filePath);
         File file = new File(filePath);
 
         if (file.exists()) {
             if (file.delete()) {
-                System.out.println("File deleted successfully.");
+                System.out.println("File has been deleted byyyye.");
+                return (ResponseEntity.status(HttpStatus.OK).body("File deleted."));
             } else {
-                System.out.println("Failed to delete the file.");
+                System.out.println("File failed to delete");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("File failed to delete");
             }
         } else {
-            System.out.println("File does not exist.");
+            System.out.println("File not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found");
         }
     }
-    }
-*/
+
+
     @PostMapping("/programmingPhaseComplete/{gameId}")
     public ResponseEntity<String> programmingPhaseComplete(@PathVariable int gameId){
         for (int i = 0; i < gamesInProgress.size(); i++) {
