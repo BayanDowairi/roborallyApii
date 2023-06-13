@@ -207,6 +207,7 @@ public class controller {
         return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body("join response -1"));
     }
 
+
     @GetMapping("/playerCount/{gameId}")
     public ResponseEntity<String> playersCount(@PathVariable int gameId){
 
@@ -252,4 +253,59 @@ public class controller {
         }
     }
 
+
+    @PostMapping("/programmingPhaseComplete/{gameId}")
+    public ResponseEntity<String> programmingPhaseComplete(@PathVariable int gameId){
+        for (int i = 0; i < gamesInProgress.size(); i++) {
+            Game game = gamesInProgress.get(i);
+            if (gameId == game.gameId) {
+                game.programmedCounter();
+                if (game.programmedPlayers == game.numPlayers)
+                    game.executedPlayers = 0;
+                return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf("ok")));
+            }
+        }
+        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(""));
+    }
+
+    @GetMapping("/allReady/{gameId}")
+    public ResponseEntity<String> allReady(@PathVariable int gameId){
+        for (int i = 0; i < gamesInProgress.size(); i++) {
+            Game game = gamesInProgress.get(i);
+            if (gameId == game.gameId) {
+                boolean allProgrammed = game.allProgrammed();
+                if (allProgrammed)
+                    return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf("true")));
+                else
+                    return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf("false")));
+            }
+        }
+        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(""));
+    }
+    @GetMapping("/getTurn/{gameId}")
+    public ResponseEntity<String> getTurn(@PathVariable int gameId){
+        for (int i = 0; i < gamesInProgress.size(); i++) {
+            Game game = gamesInProgress.get(i);
+            if (gameId == game.gameId) {
+                int executed = game.getExecuted();
+                return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf(executed)));
+            }
+        }
+        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(""));
+    }
+
+    @PostMapping("/executed/{gameId}")
+    public ResponseEntity<String> execute(@PathVariable int gameId){
+        for (int i = 0; i < gamesInProgress.size(); i++) {
+            Game game = gamesInProgress.get(i);
+            if (gameId == game.gameId) {
+                game.executedCounter();
+                if (game.executedPlayers == game.numPlayers) {
+                    game.programmedPlayers = 0;
+                }
+                return (ResponseEntity.status(HttpStatus.OK).body(String.valueOf("ok")));
+            }
+        }
+        return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body(""));
+    }
 }
