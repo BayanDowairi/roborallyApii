@@ -438,7 +438,7 @@
         "sa": {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
           "INSTANCE": {
-            "heading": "SOUTH"
+            "heading": "EAST"
           }
         }
       },
