@@ -35,7 +35,7 @@
         "sa": {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
           "INSTANCE": {
-            "Heading": "SOUTH"
+            "heading": "SOUTH"
           }
         }
       },
@@ -342,7 +342,7 @@
         "sa": {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
           "INSTANCE": {
-            "Heading": "SOUTH"
+            "heading": "EAST"
           }
         }
       },
