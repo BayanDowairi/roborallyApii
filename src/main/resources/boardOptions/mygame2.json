@@ -16,7 +16,13 @@
       {
         "type": "Wall",
         "x": 0,
-        "y": 2
+        "y": 2,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
+          "INSTANCE": {
+            "Heading": "SOUTH"
+          }
+        }
       },
       {
         "type": "Normal",
@@ -265,7 +271,13 @@
       {
         "type": "Wall",
         "x": 4,
-        "y": 3
+        "y": 3,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
+          "INSTANCE": {
+            "Heading": "EAST"
+          }
+        }
       },
       {
         "type": "Normal",
@@ -442,7 +454,13 @@
       {
         "type": "Wall",
         "x": 7,
-        "y": 5
+        "y": 5,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
+          "INSTANCE": {
+            "Heading": "SOUTH"
+          }
+        }
       },
       {
         "type": "ConveyorBelt",
