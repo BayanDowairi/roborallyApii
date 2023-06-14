@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Game {
     int joinedPlayers = 1;
+    int programmedPlayers = 0;
+    int executedPlayers = 0;
 
     int numPlayers;
     String boardOption;
@@ -37,6 +39,14 @@ public class Game {
         return joinedPlayers;
     }
 
+    public void programmedCounter(){
+        programmedPlayers++;
+    }
+
+    public void executedCounter(){
+        executedPlayers++;
+    }
+
     public int getJoinedPlayers() {
         return joinedPlayers;
     }
@@ -52,5 +62,13 @@ public class Game {
 
     public boolean gameIsFull(){
         return gameFull;
+    }
+
+    public boolean allProgrammed(){
+        return programmedPlayers==numPlayers;
+    }
+
+    public int getExecuted(){
+        return executedPlayers;
     }
 }
