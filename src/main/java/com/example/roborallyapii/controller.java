@@ -105,10 +105,15 @@ public class controller {
     }
 
     // SEND JSON STRING FOR AN EXISTING BOARD WITH PLAYERS AND GAME STATE
-    @GetMapping("/existingBoard/{gameId}")
-    public ResponseEntity<String> existingBoard(@PathVariable int gameId){
-        String boardName = findGame(gameId).getBoardOption();
-        String filePath = "src/main/resources/templates/" + boardName;
+    @GetMapping("/existingBoard/{gameId}/{loadOrUpdate}")
+    public ResponseEntity<String> existingBoard(@PathVariable int gameId, @PathVariable String loadOrUpdate){
+        String filePath;
+        if(loadOrUpdate.equals("load")){
+            String boardName = findGame(gameId).getBoardOption();
+            filePath = "src/main/resources/templates/" + boardName;
+        } else {
+            filePath = "src/main/resources/templates/" + gameId;
+        }
         return getFileContent(filePath);
     }
 
