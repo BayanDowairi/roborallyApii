@@ -63,10 +63,10 @@ public class controller {
 
 
     // CREATE A GAME OBJECT
-    @GetMapping("/createGame/{players}/{boardName}")
-    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardName) {
+    @GetMapping("/createGame/{players}/{boardName}/{loadExisting}")
+    public ResponseEntity<String> newGame (@PathVariable int players, @PathVariable String boardName, @PathVariable boolean loadExisting) {
         System.out.println(players + "  players" + " , board  " + boardName);
-        Game game = new Game(players, boardName);
+        Game game = new Game(players, boardName, loadExisting);
         availableGames.add(game);
         int gameId = game.getGameId();
         return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(gameId));
@@ -206,6 +206,19 @@ public class controller {
         System.out.println("Program goes to bad request return statement.");
         return (ResponseEntity.status(HttpStatus.BAD_REQUEST).body("join response -1"));
     }
+
+    @GetMapping("/getLoadExisting/{gameId}")
+        public ResponseEntity<String> getLoadExisting(@PathVariable int gameId){
+            Game game = findAvailableGame(gameId);
+            String isExisting;
+            if(game.getLoadExisting())
+                isExisting = "true";
+            else
+                isExisting = "false";
+            return (ResponseEntity.status(HttpStatus.OK).body(isExisting));
+        }
+
+
 
 
     @GetMapping("/playerCount/{gameId}")

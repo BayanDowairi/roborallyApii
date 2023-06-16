@@ -13,10 +13,12 @@ public class Game {
 
     private boolean gameFull = false;
 
-    public Game(int numPlayers, String boardOption) {
+    private boolean loadExisting;
+
+    public Game(int numPlayers, String boardOption, boolean loadExisting) {
         this.numPlayers = numPlayers;
         this.boardOption = boardOption;
-
+        this.loadExisting = loadExisting;
         Random random = new Random();
 
         gameId = random.nextInt(200);
@@ -70,5 +72,9 @@ public class Game {
 
     public int getExecuted(){
         return executedPlayers;
+    }
+
+    public boolean getLoadExisting() {
+        return loadExisting;
     }
 }
