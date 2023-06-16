@@ -105,8 +105,9 @@ public class controller {
     }
 
     // SEND JSON STRING FOR AN EXISTING BOARD WITH PLAYERS AND GAME STATE
-    @GetMapping("/existingBoard/{boardName}")
-    public ResponseEntity<String> existingBoard(@PathVariable String boardName){
+    @GetMapping("/existingBoard/{gameId}")
+    public ResponseEntity<String> existingBoard(@PathVariable int gameId){
+        String boardName = findGame(gameId).getBoardOption();
         String filePath = "src/main/resources/templates/" + boardName;
         return getFileContent(filePath);
     }
@@ -245,6 +246,22 @@ public class controller {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(("Players must be joined."));
     }
 
+    private Game findGame(int gameId){
+        Game game;
+        for (int i = 0; i < availableGames.size(); i++) {
+            game = availableGames.get(i);
+            if (gameId == game.gameId) {
+                return game;
+            }
+        }
+        for (int i = 0; i < gamesInProgress.size(); i++) {
+            game = gamesInProgress.get(i);
+            if (gameId == game.gameId) {
+                return game;
+            }
+        }
+        return null;
+    }
     @DeleteMapping("/deleteGame/{gameId}")
     public ResponseEntity<String> deleteGame(@PathVariable int gameId) {
 
