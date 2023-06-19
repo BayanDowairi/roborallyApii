@@ -9,9 +9,249 @@
         "y": 0
       },
       {
-        "type": "Checkpoint",
+        "type": "Normal",
         "x": 0,
+        "y": 1
+      },
+      {
+        "type": "Normal",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "type": "Normal",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "type": "Normal",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "type": "Wall",
+        "x": 0,
+        "y": 5,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
+          "INSTANCE": {
+            "heading": "SOUTH"
+          }
+        }
+      },
+      {
+        "type": "Normal",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "type": "Normal",
+        "x": 0,
+        "y": 7
+      }
+    ],
+    [
+      {
+        "type": "Normal",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "type": "Normal",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "type": "Normal",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "type": "Gear",
+        "x": 1,
+        "y": 3,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Gear",
+          "INSTANCE": {
+            "turnLeft": false,
+            "turnRight": true
+          }
+        }
+      },
+      {
+        "type": "Normal",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "type": "Normal",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "type": "Normal",
+        "x": 1,
+        "y": 6
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 1,
+        "y": 7,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 3,
+            "endY": 4
+          }
+        },
+        "heading": "EAST"
+      }
+    ],
+    [
+      {
+        "type": "Normal",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 2,
         "y": 1,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 6,
+            "endY": 1
+          }
+        },
+        "heading": "EAST"
+      },
+      {
+        "type": "Normal",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "type": "Normal",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "type": "Normal",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "type": "Normal",
+        "x": 2,
+        "y": 5
+      },
+      {
+        "type": "Normal",
+        "x": 2,
+        "y": 6
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 2,
+        "y": 7,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 3,
+            "endY": 4
+          }
+        },
+        "heading": "EAST"
+      }
+    ],
+    [
+      {
+        "type": "Normal",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 3,
+        "y": 1,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 6,
+            "endY": 1
+          }
+        },
+        "heading": "EAST"
+      },
+      {
+        "type": "Normal",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "type": "Normal",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 3,
+        "y": 4,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 3,
+            "endY": 4
+          }
+        },
+        "heading": "NORTH"
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 3,
+        "y": 5,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 3,
+            "endY": 4
+          }
+        },
+        "heading": "NORTH"
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 3,
+        "y": 6,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 3,
+            "endY": 4
+          }
+        },
+        "heading": "NORTH"
+      },
+      {
+        "type": "ConveyorBelt",
+        "x": 3,
+        "y": 7,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 3,
+            "endY": 4
+          }
+        },
+        "heading": "NORTH"
+      }
+    ],
+    [
+      {
+        "type": "Checkpoint",
+        "x": 4,
+        "y": 0,
         "sa": {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Checkpoint",
           "INSTANCE": {
@@ -21,298 +261,61 @@
         }
       },
       {
-        "type": "Normal",
-        "x": 0,
-        "y": 2
-      },
-      {
-        "type": "Normal",
-        "x": 0,
-        "y": 3
-      },
-      {
-        "type": "Normal",
-        "x": 0,
-        "y": 4
-      },
-      {
-        "type": "Normal",
-        "x": 0,
-        "y": 5
-      },
-      {
-        "type": "Normal",
-        "x": 0,
-        "y": 6
-      },
-      {
-        "type": "Normal",
-        "x": 0,
-        "y": 7
-      }
-    ],
-    [
-      {
-        "type": "Normal",
-        "x": 1,
-        "y": 0
-      },
-      {
-        "type": "Normal",
-        "x": 1,
-        "y": 1
-      },
-      {
-        "type": "Normal",
-        "x": 1,
-        "y": 2
-      },
-      {
-        "type": "Gear",
-        "x": 1,
-        "y": 3,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Gear",
-          "INSTANCE": {
-            "turnLeft": false,
-            "turnRight": true
-          }
-        }
-      },
-      {
-        "type": "Normal",
-        "x": 1,
-        "y": 4
-      },
-      {
         "type": "ConveyorBelt",
-        "x": 1,
-        "y": 5,
+        "x": 4,
+        "y": 1,
         "sa": {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
           "INSTANCE": {
-            "endX": 2,
-            "endY": 4
+            "endX": 6,
+            "endY": 1
           }
         },
         "heading": "EAST"
       },
+      {
+        "type": "Normal",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "type": "Normal",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "type": "Normal",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "type": "Normal",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "type": "Normal",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "type": "Normal",
+        "x": 4,
+        "y": 7
+      }
+    ],
+    [
       {
         "type": "Checkpoint",
-        "x": 1,
-        "y": 6,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Checkpoint",
-          "INSTANCE": {
-            "index": 2,
-            "isLastCheckpoint": false
-          }
-        }
-      },
-      {
-        "type": "Normal",
-        "x": 1,
-        "y": 7
-      }
-    ],
-    [
-      {
-        "type": "ConveyorBelt",
-        "x": 2,
-        "y": 0,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 5,
-            "endY": 3
-          }
-        },
-        "heading": "EAST"
-      },
-      {
-        "type": "Normal",
-        "x": 2,
-        "y": 1
-      },
-      {
-        "type": "Normal",
-        "x": 2,
-        "y": 2
-      },
-      {
-        "type": "Normal",
-        "x": 2,
-        "y": 3
-      },
-      {
-        "type": "ConveyorBelt",
-        "x": 2,
-        "y": 4,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 2,
-            "endY": 4
-          }
-        },
-        "heading": "NORTH"
-      },
-      {
-        "type": "ConveyorBelt",
-        "x": 2,
-        "y": 5,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 2,
-            "endY": 4
-          }
-        },
-        "heading": "NORTH"
-      },
-      {
-        "type": "Normal",
-        "x": 2,
-        "y": 6
-      },
-      {
-        "type": "Gear",
-        "x": 2,
-        "y": 7,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Gear",
-          "INSTANCE": {
-            "turnLeft": false,
-            "turnRight": true
-          }
-        }
-      }
-    ],
-    [
-      {
-        "type": "ConveyorBelt",
-        "x": 3,
-        "y": 0,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 5,
-            "endY": 3
-          }
-        },
-        "heading": "EAST"
-      },
-      {
-        "type": "Normal",
-        "x": 3,
-        "y": 1
-      },
-      {
-        "type": "Wall",
-        "x": 3,
-        "y": 2,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
-          "INSTANCE": {
-            "heading": "NORTH"
-          }
-        }
-      },
-      {
-        "type": "Normal",
-        "x": 3,
-        "y": 3
-      },
-      {
-        "type": "Normal",
-        "x": 3,
-        "y": 4
-      },
-      {
-        "type": "Normal",
-        "x": 3,
-        "y": 5
-      },
-      {
-        "type": "Wall",
-        "x": 3,
-        "y": 6,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
-          "INSTANCE": {
-            "heading": "WEST"
-          }
-        }
-      },
-      {
-        "type": "Normal",
-        "x": 3,
-        "y": 7
-      }
-    ],
-    [
-      {
-        "type": "ConveyorBelt",
-        "x": 4,
-        "y": 0,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 5,
-            "endY": 3
-          }
-        },
-        "heading": "EAST"
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 1
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 2
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 3
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 4
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 5
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 6
-      },
-      {
-        "type": "Normal",
-        "x": 4,
-        "y": 7
-      }
-    ],
-    [
-      {
-        "type": "ConveyorBelt",
         "x": 5,
         "y": 0,
         "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Checkpoint",
           "INSTANCE": {
-            "endX": 5,
-            "endY": 3
+            "index": 1,
+            "isLastCheckpoint": true
           }
-        },
-        "heading": "SOUTH"
+        }
       },
       {
         "type": "ConveyorBelt",
@@ -321,37 +324,27 @@
         "sa": {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
           "INSTANCE": {
-            "endX": 5,
-            "endY": 3
+            "endX": 6,
+            "endY": 1
           }
         },
-        "heading": "SOUTH"
+        "heading": "EAST"
       },
       {
-        "type": "ConveyorBelt",
+        "type": "Normal",
         "x": 5,
-        "y": 2,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 5,
-            "endY": 3
-          }
-        },
-        "heading": "SOUTH"
+        "y": 2
       },
       {
-        "type": "ConveyorBelt",
+        "type": "Wall",
         "x": 5,
         "y": 3,
         "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
           "INSTANCE": {
-            "endX": 5,
-            "endY": 3
+            "heading": "EAST"
           }
-        },
-        "heading": "SOUTH"
+        }
       },
       {
         "type": "Normal",
@@ -364,9 +357,17 @@
         "y": 5
       },
       {
-        "type": "Normal",
+        "type": "ConveyorBelt",
         "x": 5,
-        "y": 6
+        "y": 6,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 5,
+            "endY": 6
+          }
+        },
+        "heading": "WEST"
       },
       {
         "type": "Normal",
@@ -381,9 +382,17 @@
         "y": 0
       },
       {
-        "type": "Normal",
+        "type": "ConveyorBelt",
         "x": 6,
-        "y": 1
+        "y": 1,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 6,
+            "endY": 1
+          }
+        },
+        "heading": "EAST"
       },
       {
         "type": "Normal",
@@ -413,16 +422,17 @@
         "y": 5
       },
       {
-        "type": "Checkpoint",
+        "type": "ConveyorBelt",
         "x": 6,
         "y": 6,
         "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Checkpoint",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
           "INSTANCE": {
-            "index": 3,
-            "isLastCheckpoint": false
+            "endX": 5,
+            "endY": 6
           }
-        }
+        },
+        "heading": "WEST"
       },
       {
         "type": "Normal",
@@ -432,15 +442,9 @@
     ],
     [
       {
-        "type": "Wall",
+        "type": "Normal",
         "x": 7,
-        "y": 0,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Wall",
-          "INSTANCE": {
-            "heading": "EAST"
-          }
-        }
+        "y": 0
       },
       {
         "type": "Normal",
@@ -448,16 +452,9 @@
         "y": 1
       },
       {
-        "type": "Checkpoint",
+        "type": "Normal",
         "x": 7,
-        "y": 2,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Checkpoint",
-          "INSTANCE": {
-            "index": 1,
-            "isLastCheckpoint": true
-          }
-        }
+        "y": 2
       },
       {
         "type": "Normal",
@@ -475,9 +472,17 @@
         "y": 5
       },
       {
-        "type": "Normal",
+        "type": "ConveyorBelt",
         "x": 7,
-        "y": 6
+        "y": 6,
+        "sa": {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
+          "INSTANCE": {
+            "endX": 5,
+            "endY": 6
+          }
+        },
+        "heading": "WEST"
       },
       {
         "type": "PriorityAntenna",
@@ -499,26 +504,22 @@
       "color": "hotpink",
       "spaceTemplate": {
         "type": "Normal",
-        "x": 0,
+        "x": 1,
         "y": 0
       },
       "heading": "SOUTH",
       "isLocal": false,
       "commandCards": [
         {
-          "command": "LEFT_RIGHT",
-          "observers": []
-        },
-        {
-          "command": "FORWARD",
-          "observers": []
-        },
-        {
           "command": "LEFT",
           "observers": []
         },
         {
-          "command": "LEFT",
+          "command": "FAST_FORWARD",
+          "observers": []
+        },
+        {
+          "command": "RIGHT",
           "observers": []
         },
         {
@@ -530,7 +531,11 @@
           "observers": []
         },
         {
-          "command": "RIGHT",
+          "command": "FAST_FORWARD",
+          "observers": []
+        },
+        {
+          "command": "FAST_FORWARD",
           "observers": []
         },
         {
@@ -549,74 +554,15 @@
         "x": 1,
         "y": 1
       },
-      "heading": "SOUTH",
+      "heading": "WEST",
       "isLocal": false,
       "commandCards": [
-        {
-          "command": "FORWARD",
-          "observers": []
-        },
-        {
-          "command": "LEFT_RIGHT",
-          "observers": []
-        },
-        {
-          "command": "FORWARD",
-          "observers": []
-        },
-        {
-          "command": "FORWARD",
-          "observers": []
-        },
-        {
-          "command": "LEFT",
-          "observers": []
-        },
-        {
-          "command": "FORWARD",
-          "observers": []
-        },
-        {
-          "command": "FORWARD",
-          "observers": []
-        },
-        {
-          "command": "RIGHT",
-          "observers": []
-        }
-      ],
-      "tokenCount": 0,
-      "registerIsEmpty": true
-    },
-    {
-      "name": "Player 3",
-      "color": "lightblue",
-      "spaceTemplate": {
-        "type": "ConveyorBelt",
-        "x": 2,
-        "y": 4,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 2,
-            "endY": 4
-          }
-        },
-        "heading": "NORTH"
-      },
-      "heading": "NORTH",
-      "isLocal": false,
-      "commandCards": [
-        {
-          "command": "LEFT",
-          "observers": []
-        },
         {
           "command": "RIGHT",
           "observers": []
         },
         {
-          "command": "LEFT",
+          "command": "RIGHT",
           "observers": []
         },
         {
@@ -624,11 +570,7 @@
           "observers": []
         },
         {
-          "command": "LEFT_RIGHT",
-          "observers": []
-        },
-        {
-          "command": "LEFT",
+          "command": "RIGHT",
           "observers": []
         },
         {
@@ -637,6 +579,14 @@
         },
         {
           "command": "LEFT",
+          "observers": []
+        },
+        {
+          "command": "LEFT_RIGHT",
+          "observers": []
+        },
+        {
+          "command": "LEFT_RIGHT",
           "observers": []
         }
       ],
@@ -649,26 +599,22 @@
     "color": "hotpink",
     "spaceTemplate": {
       "type": "Normal",
-      "x": 0,
+      "x": 1,
       "y": 0
     },
     "heading": "SOUTH",
     "isLocal": false,
     "commandCards": [
       {
-        "command": "LEFT_RIGHT",
-        "observers": []
-      },
-      {
-        "command": "FORWARD",
-        "observers": []
-      },
-      {
         "command": "LEFT",
         "observers": []
       },
       {
-        "command": "LEFT",
+        "command": "FAST_FORWARD",
+        "observers": []
+      },
+      {
+        "command": "RIGHT",
         "observers": []
       },
       {
@@ -680,7 +626,11 @@
         "observers": []
       },
       {
-        "command": "RIGHT",
+        "command": "FAST_FORWARD",
+        "observers": []
+      },
+      {
+        "command": "FAST_FORWARD",
         "observers": []
       },
       {
