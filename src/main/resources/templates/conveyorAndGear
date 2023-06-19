@@ -1,4 +1,4 @@
-gi{
+{
   "width": 8,
   "height": 8,
   "spaceTemplates": [
@@ -500,9 +500,9 @@ gi{
       "spaceTemplate": {
         "type": "Normal",
         "x": 1,
-        "y": 2
+        "y": 0
       },
-      "heading": "SOUTH",
+      "heading": "EAST",
       "isLocal": false,
       "commandCards": [
         {
@@ -514,23 +514,23 @@ gi{
           "observers": []
         },
         {
-          "command": "RIGHT",
+          "command": "FORWARD",
           "observers": []
         },
         {
-          "command": "LEFT_RIGHT",
+          "command": "FAST_FORWARD",
           "observers": []
         },
         {
-          "command": "LEFT_RIGHT",
+          "command": "FORWARD",
           "observers": []
         },
         {
-          "command": "LEFT_RIGHT",
+          "command": "FORWARD",
           "observers": []
         },
         {
-          "command": "LEFT",
+          "command": "FAST_FORWARD",
           "observers": []
         },
         {
@@ -539,25 +539,17 @@ gi{
         }
       ],
       "tokenCount": 0,
-      "registerIsEmpty": false
+      "registerIsEmpty": true
     },
     {
       "name": "Player 2",
       "color": "purple",
       "spaceTemplate": {
-        "type": "ConveyorBelt",
-        "x": 4,
-        "y": 0,
-        "sa": {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt",
-          "INSTANCE": {
-            "endX": 5,
-            "endY": 3
-          }
-        },
-        "heading": "EAST"
+        "type": "Normal",
+        "x": 1,
+        "y": 2
       },
-      "heading": "EAST",
+      "heading": "SOUTH",
       "isLocal": false,
       "commandCards": [
         {
@@ -565,15 +557,15 @@ gi{
           "observers": []
         },
         {
-          "command": "FAST_FORWARD",
+          "command": "LEFT_RIGHT",
           "observers": []
         },
         {
-          "command": "LEFT",
+          "command": "LEFT_RIGHT",
           "observers": []
         },
         {
-          "command": "LEFT",
+          "command": "RIGHT",
           "observers": []
         },
         {
@@ -589,7 +581,7 @@ gi{
           "observers": []
         },
         {
-          "command": "LEFT",
+          "command": "LEFT_RIGHT",
           "observers": []
         }
       ],
@@ -603,9 +595,9 @@ gi{
     "spaceTemplate": {
       "type": "Normal",
       "x": 1,
-      "y": 2
+      "y": 0
     },
-    "heading": "SOUTH",
+    "heading": "EAST",
     "isLocal": false,
     "commandCards": [
       {
@@ -617,23 +609,23 @@ gi{
         "observers": []
       },
       {
-        "command": "RIGHT",
+        "command": "FORWARD",
         "observers": []
       },
       {
-        "command": "LEFT_RIGHT",
+        "command": "FAST_FORWARD",
         "observers": []
       },
       {
-        "command": "LEFT_RIGHT",
+        "command": "FORWARD",
         "observers": []
       },
       {
-        "command": "LEFT_RIGHT",
+        "command": "FORWARD",
         "observers": []
       },
       {
-        "command": "LEFT",
+        "command": "FAST_FORWARD",
         "observers": []
       },
       {
@@ -642,7 +634,7 @@ gi{
       }
     ],
     "tokenCount": 0,
-    "registerIsEmpty": false
+    "registerIsEmpty": true
   },
   "phase": "PROGRAMMING",
   "step": 0,
